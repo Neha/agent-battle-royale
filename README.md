@@ -9,6 +9,8 @@ An interactive agent-routing demo powered by Jev from TypeSafe AI. Enter a promp
 
 The interface reveals the routing decision in stages, shows each agent's probability, and highlights the selected agent.
 
+![Agent Battle Royale showing Optimizer selected after a round](docs/screenshot.png)
+
 ## Prerequisites
 
 - Node.js 22.13 or newer
