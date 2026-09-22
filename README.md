@@ -11,28 +11,35 @@ The interface reveals the routing decision in stages, shows each agent's probabi
 
 ![Agent Battle Royale showing Optimizer selected after a round](docs/screenshot.png)
 
-## Prerequisites
+## Install
 
-- Node.js 22.13 or newer
-- pnpm 11
-- A TypeSafe AI / Jev API key
-
-## Local setup
+You need Node.js 22.13 or newer, pnpm 11.25, and a TypeSafe AI / Jev API key.
 
 ```bash
+git clone https://github.com/Neha/agent-battle-royale.git
+cd agent-battle-royale
+corepack enable
+corepack prepare pnpm@11.25.0 --activate
 pnpm install
 cp .env.example .env.local
 ```
 
-Open `.env.local` and set `TYPESAFE_API_KEY` and `SITES_PROJECT_ID`, then start the app:
+Open `.env.local` and set:
+
+- `TYPESAFE_API_KEY` — your Jev API key
+- `SITES_PROJECT_ID` — your OpenAI Sites project id, if you have one
+
+`.env.local` is gitignored. `.env.example` is the only env file that should be committed, and both values there are empty. Do not prefix either name with `VITE_`. That prefix is sent to the browser.
+
+## Start
 
 ```bash
 pnpm dev
 ```
 
-Open the local URL printed by the development server.
+Open the local URL printed by the development server, usually http://localhost:5173/.
 
-`.env.local` is gitignored. `.env.example` is the only env file that should be committed, and it has no key. Do not prefix the variable with `VITE_` — that would expose it to the browser.
+Without an API key the page still runs. It uses the backup referee instead of Jev.
 
 ## Production
 
@@ -50,3 +57,11 @@ pnpm start
 - `app/api/decision/route.ts` — server-side Jev API integration
 
 The API key is read only on the server through `TYPESAFE_API_KEY`. Never place it in client-side code or commit it to source control.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Run `pnpm lint` before opening a pull request.
+
+## License
+
+[MIT](LICENSE)
